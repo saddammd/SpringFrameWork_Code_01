@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+     <context:property-placeholder location= "classpath:PetNames.properties"/>
+	
+    <!-- define the dependency -->
+    
+    <bean id = "nutri" class="rev.com.nutritionist.Nutritionist">
+    
+    
+    </bean>
+    
+    <bean id="Doggy" class="rev.com.animal.Dog">
+    		<constructor-arg ref = "nutri"></constructor-arg>
+    		<property name="dog_name" value = "${dog.name2}"></property>
+    	</bean>
+    
+ 	<bean id="Catty"
+ 		class="rev.com.animal.Cat">	
+ 		<property name="nutri" ref="nutri"></property>
+ 		
+ 		<!-- set up constructor injection -->
+<!--  		<constructor-arg ref="myFortuneService" /> -->
+ 	</bean>
+    
+</beans>
+
+
+
+
+
